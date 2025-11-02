@@ -1,0 +1,31 @@
+{
+  "Comment": "Exemplo simples de workflow Step Functions",
+  "StartAt": "ValidateInput",
+  "States": {
+    "ValidateInput": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:123456789012:function:validateInput",
+      "Next": "IsValid"
+    },
+    "IsValid": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.isValid",
+          "BooleanEquals": true,
+          "Next": "ProcessData"
+        }
+      ],
+      "Default": "FailState"
+    },
+    "ProcessData": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:123456789012:function:processData",
+      "End": true
+    },
+    "FailState": {
+      "Type": "Fail",
+      "Cause": "Entrada inválida detectada"
+    }
+  }
+}
