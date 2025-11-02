@@ -1,4 +1,5 @@
 Explorando Workflows Automatizados com AWS Step Functions
+
 📌 Descrição do Projeto
 
 Este projeto foi realizado como parte do desafio da DIO para consolidar conhecimentos em AWS Step Functions.
